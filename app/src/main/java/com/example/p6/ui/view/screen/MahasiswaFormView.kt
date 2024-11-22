@@ -86,7 +86,6 @@ fun MahasiswaFormView(
                 )
             }
         }
-
         }
     }
 }
