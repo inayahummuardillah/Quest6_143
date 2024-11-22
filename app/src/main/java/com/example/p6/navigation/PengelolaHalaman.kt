@@ -45,38 +45,5 @@ fun MahasiswaApp(
                 navController.navigate(Halaman.Mahasiswa.name)
             })
         }
-        // Halaman Form Mahasiswa
-        composable(route = Halaman.Mahasiswa.name) {
-            MahasiswaFormView(
-                onSubmitButtonClicked = {
-                    mahasiswaViewModel.saveDataMahasiswa(it)
-                    navController.navigate(Halaman.Matakuliah.name)
-                },
-                onBackButtonClicked = { navController.popBackStack() }
-            )
-        }
-        // Halaman Rencana Studi
-        composable(route = Halaman.Matakuliah.name) {
-            RencanaStudyView(
-                mahasiswa = mahasiswaUiState,
-                onSubmitButtonClicked = { krs -> krsViewModel.saveDataKRS(krs)
-                    navController.navigate(Halaman.Tampil.name)
-                },
-                onBackButtonClicked = { navController.popBackStack() }
-            )
-        }
-        // Halaman Detail/Tampil
-        composable(route = Halaman.Tampil.name) {
-            DatailView(
-                mahasiswa = mahasiswaUiState,
-                rencanaStudi = rencanaStudiUiState,
-                onBackButtonClicked = { navController.popBackStack() },
-                onResetButtonClicked = {
-                    navController.navigate(Halaman.Splash.name) {
-                        popUpTo(Halaman.Splash.name) { inclusive = true }
-                    }
-                }
-            )
-        }
     }
 }
